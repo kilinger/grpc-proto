@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package uploader;
+
+service Uploader {
+    rpc Create(Request) returns (Response) {}
+}
+
+message Request {
+    string bucket = 1;
+    string name = 2;
+    string content_type = 3;
+    int32 expires = 4;
+}
+
+message Response {
+    string url = 1;
+    string upload_url = 2;
+}

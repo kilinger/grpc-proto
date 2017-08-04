@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package category;
+
+service Category {
+    rpc Create(CreateRequest) returns (CreateResponse) {};
+    rpc Read(ReadRequest) returns (ReadResponse) {};
+    rpc Delete(DeleteRequest) returns (DeleteResponse) {};
+    rpc List(ListRequest) returns (ListResponse) {};
+    rpc Stats(StatsRequest) returns (StatsResponse) {};
+}
+
+message Record {
+    int64 id = 1;
+    int64 parent_id = 2;
+    int64 user_id = 3;
+    string name = 4;
+    string description = 5;
+    string created_at = 6;
+    int32 position = 7;
+    string tag = 8;
+}
+
+message CreateRequest {
+    Record record = 1;
+}
+
+message CreateResponse {
+    int64 id = 1;
+}
+
+message ReadRequest {
+    int64 id = 1;
+}
+
+message ReadResponse {
+    Record record = 1;
+}
+
+message DeleteRequest {
+    int64 id = 1;
+}
+
+message DeleteResponse {
+    int64 id = 1;
+}
+
+message ListRequest {
+    int64 limit = 1;
+    int64 offset = 2;
+    int64 user_id = 3;
+    int64 parent_id = 4;
+    string tag = 5;
+}
+
+message ListResponse {
+    int32 total = 1;
+    repeated Record results = 2;
+}
+
+message StatsRequest {
+    int64 user_id = 1;
+    string tag = 2;
+}
+
+message StatsResponse {
+    int32 total = 1;
+}
+

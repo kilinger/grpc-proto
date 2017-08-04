@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package snowflake;
+
+service Snowflake {
+    rpc Create(Request) returns (Response) {};
+}
+
+message Request {
+}
+
+message Response {
+    int64 id = 1;
+}

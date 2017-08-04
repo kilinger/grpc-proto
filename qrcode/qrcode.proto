@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package qrcode;
+
+message Request {
+    string content = 1;
+    int32 size = 2;
+    string name = 3;
+}
+
+message Response {
+    string url = 1;
+}
+
+service QRcode {
+    rpc Generate(Request) returns (Response) {}
+}

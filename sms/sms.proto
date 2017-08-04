@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package sms;
+
+service Sms {
+	rpc Send(Request) returns (Response) {}
+}
+
+message Param {
+    string key = 1;
+    string value = 2;
+}
+
+message Request {
+    string channel = 1;
+    string rec_num = 2;
+    string param_string = 3;
+    repeated Param params  = 4;
+}
+
+message Response {
+    string url = 1;
+}

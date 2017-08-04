@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package enquiry;
+
+service Enquiry {
+    rpc Create(CreateRequest) returns (CreateResponse) {};
+    rpc Read(ReadRequest) returns (ReadResponse) {};
+    rpc Delete(DeleteRequest) returns (DeleteResponse) {};
+    rpc List(ListRequest) returns (ListResponse) {};
+}
+
+message Record {
+    int64 id = 1;
+    int64 user_id = 2;
+    string name = 3;
+    string url = 4;
+    string description = 5;
+    int32 quantity = 6;
+    string order_type = 7;
+    string process_type = 8;
+    string contact = 9;
+    string phone = 10;
+    string industry_type = 11;
+    string product_class = 12;
+    string area = 13;
+    bool secured = 14;
+    bool external = 15;
+    string delivery_at = 16;
+}
+
+message CreateRequest {
+    Record record = 1;
+}
+
+message CreateResponse {
+    int64 id = 1;
+}
+
+message ReadRequest {
+    int64 id = 1;
+}
+
+message ReadResponse {
+    Record record = 1;
+}
+
+message DeleteRequest {
+    int64 id = 1;
+}
+
+message DeleteResponse {
+    int64 id = 1;
+}
+
+message ListRequest {
+    int64 limit = 1;
+    int64 offset = 2;
+    int64 user_id = 3;
+}
+
+message ListResponse {
+    int32 total = 1;
+    repeated Record results = 2;
+}

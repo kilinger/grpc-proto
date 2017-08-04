@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package feedback;
+
+service Feedback {
+    rpc Create(CreateRequest) returns (CreateResponse) {};
+    rpc Read(ReadRequest) returns (ReadResponse) {};
+    rpc List(ListRequest) returns (ListResponse) {};
+}
+
+message Record {
+    int64 id = 1;
+    string content = 2;
+    string name = 3;
+    string phone = 4;
+    string email = 5;
+}
+
+message CreateRequest {
+    string content = 1;
+    string name = 2;
+    string phone = 3;
+    string email = 4;
+}
+
+message CreateResponse {
+    int64 id = 1;
+}
+
+message ReadRequest {
+    int64 id = 1;
+}
+
+message ReadResponse {
+    Record record = 1;
+}
+
+message ListRequest {
+
+}
+
+message ListResponse {
+    int64 totoal = 1;
+    repeated Record results = 2;
+}
